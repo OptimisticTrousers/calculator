@@ -27,3 +27,8 @@ function divide(...numbers){
         return a / b;
     })
 }
+
+console.log(add(3, 5, 8))
+console.log(subtract(3, 5, 8))
+console.log(multiply(3, 5, 8))
+console.log(divide(3, 5, 8))
