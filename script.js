@@ -34,8 +34,9 @@ buttons.forEach(button => {
                 
                 lastInputs.textContent = result;
                 lastInputs.textContent += operator;
-                display.textContent ="";
+                display.textContent = "";
                 number1 = display.textContent;
+                result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
             }
             else{
 
@@ -57,6 +58,8 @@ buttons.forEach(button => {
             lastInputs.textContent += number2;
 
             result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
+
+            number2 = "";
 
         }
         else if(button.textContent === "CLEAR"){
