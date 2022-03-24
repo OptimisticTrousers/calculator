@@ -22,20 +22,16 @@ buttons.forEach(button => {
 
             operator = button.textContent;
             display.textContent += button.textContent;
-        
+
         }
         else if(button.textContent === "="){
-
-            console.log(operator)
 
             number1 = display.textContent.slice(0, display.textContent.indexOf(`${operator}`));
 
             number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
 
-            display.textContent = operate(operator, parseInt(number1), parseInt(number2));
-            console.log(operate(operator, parseInt(number1), parseInt(number2))
-)
-            
+            display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
+
         }
         else if(button.textContent === "CLEAR"){
 
@@ -94,16 +90,12 @@ function operate(operator, a, b){
 
         case '+':
             return add(a, b);
-            break;
         case '-':
             return subtract(a, b);
-            break;
         case 'x':
             return multiply(a, b);
-            break;
         case '÷':
             return divide(a, b);
-            break;
     }
 }
 
