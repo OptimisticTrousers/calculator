@@ -16,6 +16,7 @@ buttons.forEach(button => {
         || button.textContent === "÷"){
 
             operator += button.textContent;
+            display.textContent += button.textContent;
         }
         else if(button.textContent === "="){
 
