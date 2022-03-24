@@ -32,8 +32,8 @@ buttons.forEach(button => {
 
             number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
 
-            display.textContent = add(parseInt(number1), parseInt(number2));
-            console.log(add(parseInt(number1), parseInt(number2))
+            display.textContent = operate(operator, parseInt(number1), parseInt(number2));
+            console.log(operate(operator, parseInt(number1), parseInt(number2))
 )
             
         }
@@ -93,16 +93,16 @@ function operate(operator, a, b){
     switch(operator){
 
         case '+':
-            add(a, b);
+            return add(a, b);
             break;
         case '-':
-            subtract(a, b);
+            return subtract(a, b);
             break;
         case 'x':
-            multiply(a, b);
+            return multiply(a, b);
             break;
         case '÷':
-            divide(a, b);
+            return divide(a, b);
             break;
     }
 }
