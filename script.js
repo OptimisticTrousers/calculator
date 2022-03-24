@@ -14,7 +14,7 @@ function subtract(...numbers){
 
 function multiply(...numbers){
 
-    numbers.reduce((a, b) => {
+    return numbers.reduce((a, b) => {
 
         return a * b;
     })
