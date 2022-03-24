@@ -25,4 +25,12 @@ main{
 .panel{
     background-color: lightgray;
     padding: 20px 10px;
+    margin-bottom: 30px;
+}
+button{
+    padding: 1rem 3rem;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    font-size: large;
 }
