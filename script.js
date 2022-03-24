@@ -4,11 +4,12 @@ const buttons = document.querySelectorAll('button');
 
 const lastInputs = document.querySelector('.last-inputs');
 
+let operator = "";
+
 buttons.forEach(button => {
 
     button.addEventListener('click', () => {
 
-        let operator = "";
 
         let number1 = "";
 
@@ -25,11 +26,13 @@ buttons.forEach(button => {
         }
         else if(button.textContent === "="){
 
-            number1 = display.textContent.slice(0, display.textContent.indexOf("+"));
+            console.log(operator)
 
-            number2 = display.textContent.slice(display.textContent.indexOf('+')+1, display.textContent.length);
+            number1 = display.textContent.slice(0, display.textContent.indexOf(`${operator}`));
 
-            display.textContent = add( parseInt(number1), parseInt(number2));
+            number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
+
+            display.textContent = add(parseInt(number1), parseInt(number2));
             console.log(add(parseInt(number1), parseInt(number2))
 )
             
