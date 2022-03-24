@@ -19,3 +19,11 @@ function multiply(...numbers){
         return a * b;
     })
 }
+
+function divide(...numbers){
+
+    numbers.reduce((a, b) => {
+
+        return a / b;
+    })
+}
