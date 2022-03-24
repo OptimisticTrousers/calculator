@@ -19,6 +19,9 @@ main{
     border-radius: 10px;
     box-shadow: 5px 5px 5px red; 
 }
+.clear, .delete{
+    grid-column: span 2;
+}
 .panel{
     background-color: lightgray;
     padding: 20px 10px;
