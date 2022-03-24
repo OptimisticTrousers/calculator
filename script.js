@@ -28,6 +28,21 @@ function divide(...numbers){
     })
 }
 
+function operate(operator, a, b){
+
+    switch(operator){
+
+        case '+':
+            add(a, b);
+        case '-':
+            subtract(a, b);
+        case '*':
+            multiply(a, b);
+        case '/':
+            divide(a, b);
+    }
+}
+
 console.log(add(3, 5, 8))
 console.log(subtract(3, 5, 8))
 console.log(multiply(3, 5, 8))
