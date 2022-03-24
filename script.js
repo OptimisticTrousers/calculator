@@ -11,3 +11,11 @@ function subtract(...numbers){
         return a - b;
     })
 }
+
+function multiply(...numbers){
+
+    numbers.reduce((a, b) => {
+
+        return a * b;
+    })
+}
