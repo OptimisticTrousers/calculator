@@ -70,6 +70,7 @@ buttons.forEach(button => {
 
             display.textContent += button.textContent;
             number1 = button.textContent;
+            number2 = "";
         }
 
     });
