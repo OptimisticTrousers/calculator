@@ -25,6 +25,10 @@ buttons.forEach(button => {
 
             clear();
         }
+        else if(button.textContent === "DELETE"){
+
+            display.textContent = display.textContent.slice(0, -1);
+        }
         else{
 
             display.textContent += button.textContent;
