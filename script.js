@@ -2,6 +2,29 @@ const display = document.querySelector('.display');
 
 const buttons = document.querySelectorAll('button');
 
+buttons.forEach(button => {
+
+    button.addEventListener('click', () => {
+
+        let operator = "";
+
+        let result = 0;
+
+        if(button.textContent === "+"
+        || button.textContent === "-"
+        || button.textContent === "x"
+        || button.textContent === "÷"){
+
+            operator += button.textContent;
+        }
+        else if(button.textContent === "="){
+
+            operate()
+        }
+
+        display.textContent += button.textContent;
+    })
+})
 
 function add(...numbers){
 
