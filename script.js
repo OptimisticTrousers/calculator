@@ -4,3 +4,10 @@ function add(...numbers){
         return a + b;
     })
 }
+
+function subtract(...numbers){
+
+    numbers.reduce((a, b) => {
+        return a - b;
+    })
+}
