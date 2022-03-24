@@ -10,14 +10,15 @@ let operator = "";
 
 let result = 0;
 
+let number1 = "";
+
+let number2 = "";
+
 buttons.forEach(button => {
 
     button.addEventListener('click', () => {
 
 
-        let number1 = "";
-
-        let number2 = "";
 
         //if(display.textContent.includes('.')){
             //dotButton.removeEventListener('click');
@@ -27,16 +28,22 @@ buttons.forEach(button => {
         || button.textContent === "x"
         || button.textContent === "÷"){
 
-            if(number1 !== "" && number2 !== ""){
-
-                number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
-                lastInputs = operate(operator, parseFloat(number1), parseFloat(number2));
-            }
-
             operator = button.textContent;
-            display.textContent += button.textContent;
-            lastInputs.textContent += display.textContent
-            display.textContent =""
+
+            if(number1 !== "" && number2 !== ""){
+                
+                lastInputs.textContent = result;
+                lastInputs.textContent += operator;
+                display.textContent ="";
+                number1 = display.textContent;
+            }
+            else{
+
+                display.textContent += button.textContent;
+                lastInputs.textContent += display.textContent
+                display.textContent =""
+
+            }
 
 
 
@@ -49,7 +56,7 @@ buttons.forEach(button => {
 
             lastInputs.textContent += number2;
 
-            display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
+            result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
 
         }
         else if(button.textContent === "CLEAR"){
