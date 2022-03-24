@@ -22,6 +22,8 @@ buttons.forEach(button => {
 
             operator = button.textContent;
             display.textContent += button.textContent;
+            lastInputs.textContent += display.textContent
+            display.textContent =""
 
         }
         else if(button.textContent === "="){
@@ -52,6 +54,7 @@ buttons.forEach(button => {
 function clear(){
 
     display.textContent = "";
+    lastInputs.textContent = "";
 }
 
 function add(...numbers){
