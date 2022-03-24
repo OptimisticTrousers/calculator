@@ -22,7 +22,7 @@ function multiply(...numbers){
 
 function divide(...numbers){
 
-    numbers.reduce((a, b) => {
+    return numbers.reduce((a, b) => {
 
         return a / b;
     })
