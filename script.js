@@ -4,7 +4,11 @@ const buttons = document.querySelectorAll('button');
 
 const lastInputs = document.querySelector('.last-inputs');
 
+const dotButton = document.querySelector('.dot');
+
 let operator = "";
+
+let result = 0;
 
 buttons.forEach(button => {
 
@@ -15,22 +19,35 @@ buttons.forEach(button => {
 
         let number2 = "";
 
+        //if(display.textContent.includes('.')){
+            //dotButton.removeEventListener('click');
+        //}
         if(button.textContent === "+"
         || button.textContent === "-"
         || button.textContent === "x"
         || button.textContent === "÷"){
+
+            if(number1 !== "" && number2 !== ""){
+
+                number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
+                lastInputs = operate(operator, parseFloat(number1), parseFloat(number2));
+            }
 
             operator = button.textContent;
             display.textContent += button.textContent;
             lastInputs.textContent += display.textContent
             display.textContent =""
 
+
+
         }
         else if(button.textContent === "="){
 
-            number1 = display.textContent.slice(0, display.textContent.indexOf(`${operator}`));
+            number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
 
-            number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
+            number2 = display.textContent;
+
+            lastInputs.textContent += number2;
 
             display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
 
@@ -41,15 +58,76 @@ buttons.forEach(button => {
         }
         else if(button.textContent === "DELETE"){
 
+            //if(display.textContent.slice(0, 1) === "."){
+                //dotButton.addEventListener('click', () => {
+                    //display.textContent += dotbutton.textContent;
+                //})
+            //}
+
             display.textContent = display.textContent.slice(0, -1);
         }
         else{
 
             display.textContent += button.textContent;
+            number1 = button.textContent;
         }
 
-    })
+    });
+
+
 })
+
+//function buttonCallBack(){
+
+        //let number1 = "";
+
+        //let number2 = "";
+
+        ////if(display.textContent.includes('.')){
+            ////dotButton.removeEventListener('click');
+        ////}
+        //if(button.textContent === "+"
+        //|| button.textContent === "-"
+        //|| button.textContent === "x"
+        //|| button.textContent === "÷"){
+
+            //operator = button.textContent;
+            //display.textContent += button.textContent;
+            //lastInputs.textContent += display.textContent
+            //display.textContent =""
+
+            //result += display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
+            
+
+        //}
+        //else if(button.textContent === "="){
+
+            //number1 = display.textContent.slice(0, display.textContent.indexOf(`${operator}`));
+
+            //number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
+
+            //display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
+
+        //}
+        //else if(button.textContent === "CLEAR"){
+
+            //clear();
+        //}
+        //else if(button.textContent === "DELETE"){
+
+            ////if(display.textContent.slice(0, 1) === "."){
+                ////dotButton.addEventListener('click', () => {
+                    ////display.textContent += dotbutton.textContent;
+                ////})
+            ////}
+
+            //display.textContent = display.textContent.slice(0, -1);
+        //}
+        //else{
+
+            //display.textContent += button.textContent;
+        //}
+//}
 
 function clear(){
 
