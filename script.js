@@ -21,10 +21,22 @@ buttons.forEach(button => {
 
             operate()
         }
+        else if(button.textContent === "CLEAR"){
 
-        display.textContent += button.textContent;
+            clear();
+        }
+        else{
+
+            display.textContent += button.textContent;
+        }
+
     })
 })
+
+function clear(){
+
+    display.textContent = "";
+}
 
 function add(...numbers){
 
