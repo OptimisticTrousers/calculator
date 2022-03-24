@@ -2,25 +2,37 @@ const display = document.querySelector('.display');
 
 const buttons = document.querySelectorAll('button');
 
+const lastInputs = document.querySelector('.last-inputs');
+
 buttons.forEach(button => {
 
     button.addEventListener('click', () => {
 
         let operator = "";
 
-        let result = 0;
+        let number1 = "";
+
+        let number2 = "";
 
         if(button.textContent === "+"
         || button.textContent === "-"
         || button.textContent === "x"
         || button.textContent === "÷"){
 
-            operator += button.textContent;
+            operator = button.textContent;
             display.textContent += button.textContent;
+        
         }
         else if(button.textContent === "="){
 
-            operate()
+            number1 = display.textContent.slice(0, display.textContent.indexOf("+"));
+
+            number2 = display.textContent.slice(display.textContent.indexOf('+')+1, display.textContent.length);
+
+            display.textContent = add( parseInt(number1), parseInt(number2));
+            console.log(add(parseInt(number1), parseInt(number2))
+)
+            
         }
         else if(button.textContent === "CLEAR"){
 
@@ -79,12 +91,16 @@ function operate(operator, a, b){
 
         case '+':
             add(a, b);
+            break;
         case '-':
             subtract(a, b);
-        case '*':
+            break;
+        case 'x':
             multiply(a, b);
-        case '/':
+            break;
+        case '÷':
             divide(a, b);
+            break;
     }
 }
 
