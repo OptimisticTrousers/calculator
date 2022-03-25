@@ -14,9 +14,26 @@ let number1 = "";
 
 let number2 = "";
 
+
+dotButton.addEventListener('click', () => {
+
+
+    if(display.textContent.includes('.')){
+        return
+    } 
+    else{
+        display.textContent += ".";
+    }
+})
+
 buttons.forEach(button => {
 
+        if(button.textContent === "."){
+            return;
+        }
+
     button.addEventListener('click', () => {
+
 
 
 
@@ -76,6 +93,7 @@ buttons.forEach(button => {
                     //display.textContent += dotbutton.textContent;
                 //})
             //}
+
 
             display.textContent = display.textContent.slice(0, -1);
         }
