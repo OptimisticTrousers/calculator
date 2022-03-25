@@ -90,7 +90,7 @@ buttons.forEach(button => {
             }
             else{
 
-                display.textContent += button.textContent;
+                display.textContent += " " + button.textContent;
                 lastInputs.textContent += display.textContent
                 display.textContent = ""
 
