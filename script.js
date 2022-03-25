@@ -56,7 +56,17 @@ buttons.forEach(button => {
         //if(display.textContent.includes('.')){
             //dotButton.removeEventListener('click');
         //}
-        if(operatorCheck(button.textContent)){
+        if(button.textContent === "DELETE"){
+
+            backspaceDelete();
+            //if(display.textContent.slice(0, 1) === "."){
+                //dotButton.addEventListener('click', () => {
+                    //display.textContent += dotbutton.textContent;
+                //})
+            //}
+
+        }
+        else if(operatorCheck(button.textContent)){
 
             if(operator == ""){
 
@@ -121,16 +131,6 @@ buttons.forEach(button => {
         else if(button.textContent === "CLEAR"){
 
             clear();
-        }
-        else if(button.textContent === "DELETE"){
-
-            backspaceDelete();
-            //if(display.textContent.slice(0, 1) === "."){
-                //dotButton.addEventListener('click', () => {
-                    //display.textContent += dotbutton.textContent;
-                //})
-            //}
-
         }
         else{
 
@@ -260,7 +260,25 @@ function divide(a, b){
     return a / b;
 }
 
+function checkIfValid(){
+
+    let validCheck = display.textContent;
+    
+    if(validCheck.endsWith('+') === true 
+    || validCheck.endsWith('-') === true 
+    || validCheck.endsWith('x') === true 
+    || validCheck.endsWith('÷') === true){
+
+        alert('Sorry, please enter a value after the operator');
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
 function operate(operator, a, b){
+
 
     switch(operator){
 
