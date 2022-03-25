@@ -57,7 +57,10 @@ buttons.forEach(button => {
         //}
         if(operatorCheck(button)){
 
-            operator = button.textContent;
+            if(operator == ""){
+
+                operator = button.textContent;
+            }
 
             if(number1 !== "" && number2 !== "" && operator !== ""){
 
@@ -66,12 +69,12 @@ buttons.forEach(button => {
                 number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
 
                 result = operate(operator, parseFloat(number1), parseFloat(number2));
+                operator = button.textContent;
                 lastInputs.textContent = result;
                 lastInputs.textContent += operator;
                 display.textContent = "";
                 number1 = result;
                 number2="";
-                operator = "";
 
             }
             else{
