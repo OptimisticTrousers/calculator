@@ -28,12 +28,12 @@ dotButton.addEventListener('click', () => {
     }
 })
 
-function operatorCheck(button){
+function operatorCheck(textContent){
 
-        if(button.textContent === "+"
-        || button.textContent === "-"
-        || button.textContent === "x"
-        || button.textContent === "÷"){
+        if(textContent === "+"
+        || textContent === "-"
+        || textContent === "x"
+        || textContent === "÷"){
 
             return true;
         }
@@ -55,7 +55,7 @@ buttons.forEach(button => {
         //if(display.textContent.includes('.')){
             //dotButton.removeEventListener('click');
         //}
-        if(operatorCheck(button)){
+        if(operatorCheck(button.textContent)){
 
             if(operator == ""){
 
@@ -124,6 +124,10 @@ buttons.forEach(button => {
             if(display.textContent ===""){
 
                 lastInputs.textContent = lastInputs.textContent.slice(0, -1);
+
+                if(operatorCheck(lastInputs.textContent.splice(0, -1))){
+                    operator = "";
+                }
             }
             else{
 
@@ -135,17 +139,9 @@ buttons.forEach(button => {
             if(operatorCheck(button)){
                 return;
             }
-            else{
 
-                if(number1 !== ""){
-                    number2 += button.textContent 
-                }
-                else {
-                    number1 += button.textContent
-                }
                 display.textContent += button.textContent;
 
-            }
 
         }
 
@@ -215,34 +211,24 @@ function clear(){
     operator = "";
 }
 
-function add(...numbers){
+function add(a, b){
 
-    return numbers.reduce((a, b) => {
-        return a + b;
-    })
+    return a + b;
 }
 
-function subtract(...numbers){
+function subtract(a, b){
 
-    return numbers.reduce((a, b) => {
-        return a - b;
-    })
+    return a - b
 }
 
-function multiply(...numbers){
+function multiply(a, b){
 
-    return numbers.reduce((a, b) => {
-
-        return a * b;
-    })
+    return a * b;
 }
 
-function divide(...numbers){
+function divide(a, b){
 
-    return numbers.reduce((a, b) => {
-
-        return a / b;
-    })
+    return a / b;
 }
 
 function operate(operator, a, b){
