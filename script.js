@@ -49,9 +49,6 @@ buttons.forEach(button => {
 
     button.addEventListener('click', () => {
 
-        if(display.textContent === "0"){
-            display.textContent = "";
-        }
 
 
 
@@ -127,25 +124,13 @@ buttons.forEach(button => {
         }
         else if(button.textContent === "DELETE"){
 
+            backspaceDelete();
             //if(display.textContent.slice(0, 1) === "."){
                 //dotButton.addEventListener('click', () => {
                     //display.textContent += dotbutton.textContent;
                 //})
             //}
 
-
-            if(display.textContent ===""){
-
-                lastInputs.textContent = lastInputs.textContent.slice(0, -1);
-
-                if(operatorCheck(lastInputs.textContent.splice(0, -1))){
-                    operator = "";
-                }
-            }
-            else{
-
-                display.textContent = display.textContent.slice(0, -1);
-            }
         }
         else{
 
@@ -153,12 +138,15 @@ buttons.forEach(button => {
                 return;
             }
 
-            if(lastInputs.textContent.includes('+')
+            else if(lastInputs.textContent.includes('+')
             || lastInputs.textContent.includes('-')
             || lastInputs.textContent.includes('x')
             || lastInputs.textContent.includes('÷')){
 
                 number2 += button.textContent;
+            }
+            if(display.textContent === "0"){
+                display.textContent = "";
             }
                 number1 += button.textContent;
                 display.textContent += button.textContent;
@@ -230,6 +218,26 @@ function clear(){
     number1 = "";
     number2 = "";
     operator = "";
+}
+
+function backspaceDelete(){
+
+            if(display.textContent === ""){
+
+                lastInputs.textContent = lastInputs.textContent.slice(0, -1);
+
+                if(operatorCheck(lastInputs.textContent.slice(0, -1))){
+                    operator = "";
+                }
+            }
+            else if(display.textContent === "0" || display.textContent.length == 1){
+                display.textContent = "0";
+            }
+            else{
+
+                    display.textContent = display.textContent.slice(0, -1);
+            }
+
 }
 
 function add(a, b){
