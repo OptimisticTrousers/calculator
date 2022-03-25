@@ -140,6 +140,14 @@ buttons.forEach(button => {
                 return;
             }
 
+            if(lastInputs.textContent.includes('+')
+            || lastInputs.textContent.includes('-')
+            || lastInputs.textContent.includes('x')
+            || lastInputs.textContent.includes('÷')){
+
+                number2 += button.textContent;
+            }
+                number1 += button.textContent;
                 display.textContent += button.textContent;
 
 
