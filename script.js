@@ -35,8 +35,9 @@ function operatorCheck(button){
         || button.textContent === "x"
         || button.textContent === "÷"){
 
-            return button.textContent;
+            return true;
         }
+        return false;
 
 }
 
@@ -58,27 +59,16 @@ buttons.forEach(button => {
 
             operator = button.textContent;
 
-            if(number1 !== "" && number2 !== ""){
+            if(number1.length === number2.length){
 
                 
-                if(number1 === "."){
-                    number1 = "0."
-                }
-                else if(number2 === "."){
-                    number2 = "0."
-                }
-                else{
-                    number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
-                    number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
-                }
+                number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
+                number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
 
                 result = operate(operator, parseFloat(number1), parseFloat(number2));
                 lastInputs.textContent = result;
                 lastInputs.textContent += operator;
                 display.textContent = "";
-                number1 ="";
-                number2 ="";
-                operator = "";
 
             }
             else{
@@ -105,10 +95,7 @@ buttons.forEach(button => {
 
                 result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
 
-                number1 ="";
-                number2 ="";
-                operator = "";
-
+                number1 = result;
             
             
 
@@ -136,7 +123,10 @@ buttons.forEach(button => {
             else{
 
                 if(number1 !== ""){
-                    number2 =button.textContent 
+                    number2 = button.textContent 
+                }
+                else {
+                    number1 = button.textContent
                 }
                 display.textContent += button.textContent;
 
