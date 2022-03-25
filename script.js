@@ -23,8 +23,11 @@ dotButton.addEventListener('click', () => {
     if(display.textContent.includes('.')){
         return
     } 
-    else{
+    else if(display.textContent === "0"){
         display.textContent += "0.";
+    }
+    else{
+        display.textContent += ".";
     }
 })
 
@@ -48,6 +51,10 @@ buttons.forEach(button => {
         }
 
     button.addEventListener('click', () => {
+
+        if(display.textContent === "0"){
+            display.textContent = "";
+        }
 
 
 
@@ -212,7 +219,7 @@ buttons.forEach(button => {
 
 function clear(){
 
-    display.textContent = "";
+    display.textContent = "0";
     lastInputs.textContent = "";
     number1 = "";
     number2 = "";
