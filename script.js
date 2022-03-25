@@ -32,17 +32,20 @@ buttons.forEach(button => {
 
             if(number1 !== "" && number2 !== ""){
                 
+                number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
+                number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
+
+                result = operate(operator, parseFloat(number1), parseFloat(number2));
                 lastInputs.textContent = result;
                 lastInputs.textContent += operator;
                 display.textContent = "";
-                number1 = display.textContent;
-                result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
+                number2 = "";
             }
             else{
 
                 display.textContent += button.textContent;
                 lastInputs.textContent += display.textContent
-                display.textContent =""
+                display.textContent = ""
 
             }
 
@@ -144,6 +147,9 @@ function clear(){
 
     display.textContent = "";
     lastInputs.textContent = "";
+    number1 = "";
+    number2 = "";
+    operator = "";
 }
 
 function add(...numbers){
