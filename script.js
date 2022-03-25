@@ -24,7 +24,7 @@ dotButton.addEventListener('click', () => {
         return
     } 
     else{
-        display.textContent += ".";
+        display.textContent += "0.";
     }
 })
 
