@@ -105,6 +105,9 @@ buttons.forEach(button => {
             if(operator === ""){
                 return 
             }
+            if(lastInputs.textContent.endsWith(`${operator}`) && display.textContent === ""){
+                alert(`Sorry, please enter a valid number after the operator ${operator}`);
+            }
             else{
 
 
@@ -260,22 +263,22 @@ function divide(a, b){
     return a / b;
 }
 
-function checkIfValid(){
+//function checkIfValid(){
 
-    let validCheck = display.textContent;
+    //let validCheck = display.textContent;
     
-    if(validCheck.endsWith('+') === true 
-    || validCheck.endsWith('-') === true 
-    || validCheck.endsWith('x') === true 
-    || validCheck.endsWith('÷') === true){
+    //if(validCheck.endsWith('+') === true 
+    //|| validCheck.endsWith('-') === true 
+    //|| validCheck.endsWith('x') === true 
+    //|| validCheck.endsWith('÷') === true){
 
-        alert('Sorry, please enter a value after the operator');
-        return false;
-    }
-    else{
-        return true;
-    }
-}
+        //alert('Sorry, please enter a value after the operator');
+        //return false;
+    //}
+    //else{
+        //return true;
+    //}
+//}
 
 function operate(operator, a, b){
 
