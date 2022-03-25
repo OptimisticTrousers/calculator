@@ -59,6 +59,10 @@ buttons.forEach(button => {
         if(button.textContent === "DELETE"){
 
             backspaceDelete();
+
+            if(display.textContent.includes('e')){
+                clear();
+            }
             //if(display.textContent.slice(0, 1) === "."){
                 //dotButton.addEventListener('click', () => {
                     //display.textContent += dotbutton.textContent;
