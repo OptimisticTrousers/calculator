@@ -23,9 +23,6 @@ dotButton.addEventListener('click', () => {
     if(display.textContent.includes('.')){
         return
     } 
-    else if(display.textContent === "0"){
-        display.textContent += "0.";
-    }
     else{
         display.textContent += ".";
     }
@@ -98,6 +95,12 @@ buttons.forEach(button => {
         else if(button.textContent === "="){
 
 
+            if(operator === ""){
+                return 
+            }
+            else{
+
+
                 number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
 
                 number2 = display.textContent;
@@ -111,6 +114,9 @@ buttons.forEach(button => {
                 number1 = result;
                 number2="";
                 operator = "";
+            }
+                
+
             
             
 
