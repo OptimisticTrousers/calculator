@@ -151,6 +151,9 @@ buttons.forEach(button => {
             if(display.textContent === "0"){
                 display.textContent = "";
             }
+            if(display.textContent.length >= 21){
+                return;
+            }
                 number1 += button.textContent;
                 display.textContent += button.textContent;
 
