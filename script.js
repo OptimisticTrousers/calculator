@@ -121,7 +121,14 @@ buttons.forEach(button => {
             //}
 
 
-            display.textContent = display.textContent.slice(0, -1);
+            if(display.textContent ===""){
+
+                lastInputs.textContent = lastInputs.textContent.slice(0, -1);
+            }
+            else{
+
+                display.textContent = display.textContent.slice(0, -1);
+            }
         }
         else{
 
