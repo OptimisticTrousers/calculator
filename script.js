@@ -59,7 +59,7 @@ buttons.forEach(button => {
 
             operator = button.textContent;
 
-            if(number1.length === number2.length){
+            if(number1 !== "" && number2 !== "" && operator !== ""){
 
                 
                 number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
@@ -69,6 +69,9 @@ buttons.forEach(button => {
                 lastInputs.textContent = result;
                 lastInputs.textContent += operator;
                 display.textContent = "";
+                number1 = result;
+                number2="";
+                operator = "";
 
             }
             else{
@@ -96,6 +99,8 @@ buttons.forEach(button => {
                 result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
 
                 number1 = result;
+                number2="";
+                operator = "";
             
             
 
@@ -123,10 +128,10 @@ buttons.forEach(button => {
             else{
 
                 if(number1 !== ""){
-                    number2 = button.textContent 
+                    number2 += button.textContent 
                 }
                 else {
-                    number1 = button.textContent
+                    number1 += button.textContent
                 }
                 display.textContent += button.textContent;
 
