@@ -290,7 +290,7 @@ function backspaceDelete(){
                 
                 display.textContent = "0";
             }
-            else if(lastInputs.textContent.length === 1 && operator === ""){
+            else if(lastInputs.textContent.length === 1){ 
 
                 lastInputs.textContent = "";
                 display.textContent = "0";
