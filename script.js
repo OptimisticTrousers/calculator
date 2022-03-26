@@ -278,7 +278,27 @@ function clear(){
 
 function backspaceDelete(){
 
-            if(display.textContent === ""){
+            if(display.textContent !== "" && lastInputs.textContent !== ""){
+
+                display.textContent = display.textContent.slice(0, -1);
+            }
+            else if(operatorCheck(lastInputs.textContent) == false && number1.length === 1){
+
+                lastInputs.textContent = "";
+                display.textContent = "0";
+                number1 = ""; 
+
+            }
+            else if(display.textContent.length === 1){
+                
+                display.textContent = "0";
+            }
+            else if(lastInputs.textContent.length === 1 && operator === ""){
+
+                lastInputs.textContent = "";
+                display.textContent = "0";
+            }
+            else if(display.textContent === ""){
 
                 if(operatorCheck(lastInputs.textContent)){
 
@@ -286,16 +306,16 @@ function backspaceDelete(){
                 }
 
                 lastInputs.textContent = lastInputs.textContent.slice(0, -1);
-
             }
-            else if(display.textContent.length === 1){
-                display.textContent = "0";
-            }
+            //else if(number1.length === 1 && operator === "" && number2 === "" && display.textContent === ""){
 
-            else if(display.textContent === "" && number1 !== "" && operator === "" && number2 === ""){
+                //if(operatorCheck(lastInputs.textContent) != true && number1.length === 1){
 
-                display.textContent = "0";
-            }
+                //}
+
+                //lastInputs.textContent = "";
+                //display.textContent = "0";
+            //}
 
             else{
 
