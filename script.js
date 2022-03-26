@@ -280,19 +280,27 @@ function backspaceDelete(){
 
             if(display.textContent === ""){
 
-                lastInputs.textContent = lastInputs.textContent.slice(0, -1);
+                if(operatorCheck(lastInputs.textContent)){
 
-                if(operatorCheck(lastInputs.textContent.slice(0, -1))){
                     operator = "";
                 }
+
+                lastInputs.textContent = lastInputs.textContent.slice(0, -1);
+
             }
-            else if(display.textContent === "" && number1.length === 1 && operator === ""){
+            else if(display.textContent.length === 1){
                 display.textContent = "0";
             }
+
+            else if(display.textContent === "" && number1 !== "" && operator === "" && number2 === ""){
+
+                display.textContent = "0";
+            }
+
             else{
 
-                    display.textContent = display.textContent.slice(0, -1);
-                    number2 += number2.slice(0, -1);
+                display.textContent = display.textContent.slice(0, -1);
+                number2 += number2.slice(0, -1);
             }
 
 }
