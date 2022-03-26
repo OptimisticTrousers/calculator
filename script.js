@@ -281,13 +281,7 @@ function backspaceDelete(){
             if(display.textContent !== "" && lastInputs.textContent !== ""){
 
                 display.textContent = display.textContent.slice(0, -1);
-            }
-            else if(operatorCheck(lastInputs.textContent) == false && number1.length === 1){
-
-                lastInputs.textContent = "";
-                display.textContent = "0";
-                number1 = ""; 
-
+                number2 = number2.slice(0, -1);
             }
             else if(display.textContent.length === 1){
                 
@@ -297,6 +291,13 @@ function backspaceDelete(){
 
                 lastInputs.textContent = "";
                 display.textContent = "0";
+            }
+            else if(operatorCheck(lastInputs.textContent) == false && number1.length === 1){
+
+                lastInputs.textContent = "";
+                display.textContent = "0";
+                number1 = ""; 
+
             }
             else if(display.textContent === ""){
 
