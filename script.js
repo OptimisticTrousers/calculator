@@ -184,8 +184,15 @@ buttons.forEach(button => {
 
                 display.textContent += keyValue;
             }
+            else if(keyValue === "+"
+            || keyValue === "-" 
+            || keyValue === "*"
+            || keyValue === "/"){
+                display.textContent += keyValue;
+            }
 
         })
+        
 
 
 
