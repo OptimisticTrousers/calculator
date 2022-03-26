@@ -163,6 +163,14 @@ function buttonCallBack(input){
 
 buttons.forEach(button => {
 
+    //let randomRed = Number(Math.random*266)
+
+    //let randomGreen = Number(Math.random*266)
+    
+    //let randomBlue = Number(Math.random*266)
+
+    //button.style.boxShadow = `10px 20px 30px rgb${randomRed, randomGreen, randomBlue}`;
+
         if(button.textContent === "."){
             return;
         }

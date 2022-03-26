@@ -16,6 +16,18 @@ body{
     grid-gap: 10px;
 }
 
+button:hover{
+    background-color: white; 
+    color: black;
+    cursor: pointer;
+    transition: all .15s ease-in-out; 
+    transform: translateY(-0.2rem);
+}
+.display, .last-inputs{
+
+    transition: all .15s ease-in-out; 
+}
+
 main{
 
     width: auto;
