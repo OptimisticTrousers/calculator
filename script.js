@@ -201,7 +201,8 @@ buttons.forEach(button => {
                 keyValue = "x";
             }
             else if(keyValue === "+"
-            || keyValue === "-"){
+            || keyValue === "-"
+            || keyValue === "."){
                 keyValue = keyValue;
             }
             else{
