@@ -127,9 +127,15 @@ function buttonCallBack(input){
             }
             else{
 
-                display.textContent += " " + input;
-                lastInputs.textContent += display.textContent
-                display.textContent = ""
+                if(operatorCheck(input) === true && lastInputs.textContent.includes(`${input}`)){
+
+                    return;
+                }
+                else{
+                    display.textContent += " " + input;
+                    lastInputs.textContent += display.textContent
+                    display.textContent = ""
+                }
 
             }
 
