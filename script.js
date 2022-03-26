@@ -76,9 +76,32 @@ function buttonCallBack(input){
             //}
 
         }
-        else if(display.textContent.length >= 11 || lastInputs.textContent.length >= 11){
-            alert("Too many characters!")
-            return;
+        else if(display.textContent.length >= 11){
+
+
+            if(display.textContent === "Infinity" || display.textContent === "NaN"){
+                return;
+            }
+            else{
+
+                let replacementText = display.textContent
+
+                display.textContent = Number(display.textContent).toExponential(2);
+            }
+
+        }
+        else if(lastInputs.textContent.length >= 11){
+
+            if(lastInputs.textContent === "Infinity"){
+                return;
+            }
+            else{
+
+                let replacementText = lastInputs.textContent
+
+                lastInputs.textContent = Number(lastInputs.textContent).toExponential(2);
+            }
+
         }
         else if(operatorCheck(input)){
 
@@ -123,6 +146,7 @@ function buttonCallBack(input){
                 alert(`Sorry, please enter a valid number after the operator ${operator}`);
             }
             else{
+                
 
                 calculate();
 
@@ -151,7 +175,7 @@ function buttonCallBack(input){
 
                 number2 += input;
             }
-            if(display.textContent === "0"){
+            else if(display.textContent === "0"){
                 display.textContent = "";
             }
                 number1 += input;
@@ -162,6 +186,34 @@ function buttonCallBack(input){
 
 }
 
+function handleInfinity(userInput){
+    
+        if(display.textContent === "Infinity"){
+
+            if(userInput === "DELETE" || userInput === "CLEAR" || userInput === "Backspace" || userInput === "C"){
+                clear();
+            }
+            else{
+
+                display.textContent = Number(display.textContent).toExponential(2);
+            }
+
+        }
+        if(lastInputs.textContent === "Infinity"){
+
+            if(userInput === "DELETE" || userInput === "CLEAR" || userInput === "Backspace" || userInput === "C"){
+                clear();
+            }
+            else{
+
+                lastInputs.textContent = Number(lastInputs.textContent).toExponential(2);
+            }
+
+        }
+        
+
+}
+
 buttons.forEach(button => {
 
         if(button.textContent === "."){
@@ -169,8 +221,17 @@ buttons.forEach(button => {
         }
 
     button.addEventListener('click', () => {
-        
-        buttonCallBack(button.textContent);
+
+        if(display.textContent === "Infinity" || lastInputs.textContent === "Infinity"){
+
+            handleInfinity(button.textContent);
+        }
+        else{
+
+            buttonCallBack(button.textContent);
+        }
+
+
     });
 
 })
@@ -179,7 +240,7 @@ buttons.forEach(button => {
 
             let keyValue = event.key
 
-            console.log(keyValue)
+            handleInfinity(keyValue);
 
             if(keyValue === "C"){
 
@@ -210,7 +271,15 @@ buttons.forEach(button => {
                 return;
             }
 
-            buttonCallBack(keyValue);
+
+            if(display.textContent === "Infinity" || lastInputs.textContent === "Infinity"){
+
+                handleInfinity(keyValue);
+            }
+            else{
+
+                buttonCallBack(keyValue);
+            }
         })
         
 
@@ -331,17 +400,17 @@ function backspaceDelete(){
 
 function add(a, b){
 
-    return a + b;
+    return (a + b).toFixed(4)
 }
 
 function subtract(a, b){
 
-    return a - b
+    return (a - b).toFixed(4)
 }
 
 function multiply(a, b){
 
-    return a * b;
+    return (a * b).toFixed(4);
 }
 
 function divide(a, b){
@@ -352,7 +421,7 @@ function divide(a, b){
         return "0";
     }
 
-    return a / b;
+    return (a / b).toFixed(4);
 }
 
 //function checkIfValid(){
