@@ -76,6 +76,10 @@ function buttonCallBack(input){
             //}
 
         }
+        else if(display.textContent.length >= 11 || lastInputs.textContent.length >= 11){
+            alert("Too many characters!")
+            return;
+        }
         else if(operatorCheck(input)){
 
             if(operator == ""){
@@ -150,9 +154,6 @@ function buttonCallBack(input){
             if(display.textContent === "0"){
                 display.textContent = "";
             }
-            if(display.textContent.length >= 21){
-                return;
-            }
                 number1 += input;
                 display.textContent += input;
 
@@ -162,14 +163,6 @@ function buttonCallBack(input){
 }
 
 buttons.forEach(button => {
-
-    //let randomRed = Number(Math.random*266)
-
-    //let randomGreen = Number(Math.random*266)
-    
-    //let randomBlue = Number(Math.random*266)
-
-    //button.style.boxShadow = `10px 20px 30px rgb${randomRed, randomGreen, randomBlue}`;
 
         if(button.textContent === "."){
             return;

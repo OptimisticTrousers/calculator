@@ -25,7 +25,8 @@ button:hover{
 }
 .display, .last-inputs{
 
-    transition: all .15s ease-in-out; 
+    font-size: 30px;
+    font-family: "Scientific Calculator LCD", sans-serif;
 }
 
 main{
@@ -37,7 +38,7 @@ main{
     width: auto;
     padding: 50px 25px;
     height: 500px;
-    background-color:lightslategrey;
+    background-color:#c2d4b1;
     border-radius: 10px;
     box-shadow: 8px 8px 8px #ff4f44; 
 }
