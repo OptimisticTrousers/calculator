@@ -14,8 +14,6 @@ let number1 = "";
 
 let number2 = "";
 
-let hasCalculated = false;
-
 
 dotButton.addEventListener('click', () => {
 
