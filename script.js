@@ -188,11 +188,19 @@ buttons.forEach(button => {
 
                 keyValue = "DELETE"
             }
+            else if(keyValue === "Enter"){
+                keyValue = "=";
+            }
             else if(keyValue >= 0 || keyValue <= 9){
                 keyValue = keyValue.toString(); 
             }
             else if(keyValue === "/"){
                 keyValue = "÷"
+            }
+            else if(keyValue === "+"
+            || keyValue === "-"
+            || keyValue === "*"){
+                keyValue = keyValue;
             }
             else{
                 return;
