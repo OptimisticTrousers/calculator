@@ -7,6 +7,7 @@ body{
     align-items: center;
     background-color: #214f31;
     gap: 16px;
+    font-family: 'arial', 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .buttons{
