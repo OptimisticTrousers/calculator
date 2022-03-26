@@ -278,6 +278,9 @@ function clear(){
 
 function backspaceDelete(){
 
+            if(display.textContent === "NaN"){
+                clear();
+            }
             if(display.textContent !== "" && lastInputs.textContent !== ""){
 
                 display.textContent = display.textContent.slice(0, -1);
