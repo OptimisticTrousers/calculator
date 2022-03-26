@@ -162,16 +162,32 @@ buttons.forEach(button => {
 
         }
 
-        document.addEventListener('keydown', (event) => {
-
-            console.log(event.key)
-        })
 
 
     });
 
-
 })
+
+        document.addEventListener('keydown', (event) => {
+
+            let keyValue = event.key
+
+            if(keyValue === "C"){
+
+                clear();
+            }
+            else if(keyValue === "Backspace"){
+
+                display.textContent = display.textContent.slice(0, -1);
+            }
+            else if(keyValue >= 0 || keyValue <= 9){
+
+                display.textContent += keyValue;
+            }
+
+        })
+
+
 
 //function buttonCallBack(){
 
