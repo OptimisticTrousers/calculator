@@ -5,7 +5,7 @@ body{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    background-color: #214f31;
 }
 
 .buttons{
@@ -30,12 +30,16 @@ button:hover{
 
 main{
 
+    display: flex;
+    margin-top: auto;
+    flex-direction: column;
+    justify-content: center;
     width: auto;
     padding: 50px 25px;
     height: 500px;
     background-color:lightslategrey;
     border-radius: 10px;
-    box-shadow: 5px 5px 5px red; 
+    box-shadow: 8px 8px 8px #ff4f44; 
 }
 
 .clear, .delete{
@@ -45,6 +49,8 @@ main{
 
 .panel{
 
+    border-radius: 6px;
+    box-shadow: inset 2px 4px 6px black;
     background-color: lightgray;
     padding: 20px 10px;
     margin-bottom: 30px;
@@ -53,7 +59,7 @@ main{
 button{
 
     padding: 1rem 3rem;
-    border-radius: 5px;
+    border-radius: 15px;
     background-color: black;
     color: white;
     font-size: large;
