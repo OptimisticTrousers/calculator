@@ -286,12 +286,13 @@ function backspaceDelete(){
                     operator = "";
                 }
             }
-            else if(display.textContent === "0" || display.textContent.length == 1){
+            else if(display.textContent === "" && number1.length === 1 && operator === ""){
                 display.textContent = "0";
             }
             else{
 
                     display.textContent = display.textContent.slice(0, -1);
+                    number2 += number2.slice(0, -1);
             }
 
 }
