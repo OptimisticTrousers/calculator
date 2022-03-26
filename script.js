@@ -178,25 +178,27 @@ buttons.forEach(button => {
 
             let keyValue = event.key
 
+            console.log(keyValue)
+
             if(keyValue === "C"){
 
-                clear();
+                keyValue = "CLEAR"
             }
             else if(keyValue === "Backspace"){
 
-                display.textContent = display.textContent.slice(0, -1);
+                keyValue = "DELETE"
             }
             else if(keyValue >= 0 || keyValue <= 9){
-
-                display.textContent += keyValue;
+                keyValue = keyValue.toString(); 
             }
-            else if(keyValue === "+"
-            || keyValue === "-" 
-            || keyValue === "*"
-            || keyValue === "/"){
-                display.textContent += keyValue;
+            else if(keyValue === "/"){
+                keyValue = "÷"
+            }
+            else{
+                return;
             }
 
+            buttonCallBack(keyValue);
         })
         
 
