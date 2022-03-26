@@ -39,26 +39,34 @@ function operatorCheck(textContent){
 
 }
 
-buttons.forEach(button => {
+function calculate(){
 
-        if(button.textContent === "."){
-            return;
-        }
+    number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
 
-    button.addEventListener('click', () => {
+    number2 = display.textContent;
 
+    lastInputs.textContent += number2;
 
+    lastInputs.textContent = "";
 
+    result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
 
+    number1 = result;
+    number2="";
+    operator = "";
+
+}
+
+function buttonCallBack(input){
 
         //if(display.textContent.includes('.')){
             //dotButton.removeEventListener('click');
         //}
-        if(button.textContent === "DELETE"){
+        if(input === "DELETE"){
 
             backspaceDelete();
 
-            if(display.textContent.includes('e')){
+            if(input.includes('e')){
                 clear();
             }
             //if(display.textContent.slice(0, 1) === "."){
@@ -68,11 +76,11 @@ buttons.forEach(button => {
             //}
 
         }
-        else if(operatorCheck(button.textContent)){
+        else if(operatorCheck(input)){
 
             if(operator == ""){
 
-                operator = button.textContent;
+                operator = input;
             }
 
             if(number1 !== "" && number2 !== "" && operator !== ""){
@@ -82,7 +90,7 @@ buttons.forEach(button => {
                 number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
 
                 result = operate(operator, parseFloat(number1), parseFloat(number2));
-                operator = button.textContent;
+                operator = input;
                 lastInputs.textContent = result;
                 lastInputs.textContent += operator;
                 display.textContent = "";
@@ -92,7 +100,7 @@ buttons.forEach(button => {
             }
             else{
 
-                display.textContent += " " + button.textContent;
+                display.textContent += " " + input;
                 lastInputs.textContent += display.textContent
                 display.textContent = ""
 
@@ -101,7 +109,7 @@ buttons.forEach(button => {
 
 
         }
-        else if(button.textContent === "="){
+        else if(input === "="){
 
 
             if(operator === ""){
@@ -112,20 +120,9 @@ buttons.forEach(button => {
             }
             else{
 
+                calculate();
 
-                number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
 
-                number2 = display.textContent;
-
-                lastInputs.textContent += number2;
-
-                lastInputs.textContent = "";
-
-                result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
-
-                number1 = result;
-                number2="";
-                operator = "";
             }
                 
 
@@ -133,13 +130,13 @@ buttons.forEach(button => {
             
 
         }
-        else if(button.textContent === "CLEAR"){
+        else if(input === "CLEAR"){
 
             clear();
         }
         else{
 
-            if(operatorCheck(button)){
+            if(operatorCheck(input)){
                 return;
             }
 
@@ -148,7 +145,7 @@ buttons.forEach(button => {
             || lastInputs.textContent.includes('x')
             || lastInputs.textContent.includes('÷')){
 
-                number2 += button.textContent;
+                number2 += input;
             }
             if(display.textContent === "0"){
                 display.textContent = "";
@@ -156,14 +153,23 @@ buttons.forEach(button => {
             if(display.textContent.length >= 21){
                 return;
             }
-                number1 += button.textContent;
-                display.textContent += button.textContent;
+                number1 += input;
+                display.textContent += input;
 
 
         }
 
+}
 
+buttons.forEach(button => {
 
+        if(button.textContent === "."){
+            return;
+        }
+
+    button.addEventListener('click', () => {
+        
+        buttonCallBack(button.textContent);
     });
 
 })
