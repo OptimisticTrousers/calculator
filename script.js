@@ -400,17 +400,17 @@ function backspaceDelete(){
 
 function add(a, b){
 
-    return (a + b).toFixed(4)
+    return (a + b).toFixed(2)
 }
 
 function subtract(a, b){
 
-    return (a - b).toFixed(4)
+    return (a - b).toFixed(2)
 }
 
 function multiply(a, b){
 
-    return (a * b).toFixed(4);
+    return (a * b).toFixed(2);
 }
 
 function divide(a, b){
@@ -421,7 +421,7 @@ function divide(a, b){
         return "0";
     }
 
-    return (a / b).toFixed(4);
+    return (a / b).toFixed(2);
 }
 
 //function checkIfValid(){
