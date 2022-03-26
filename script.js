@@ -92,7 +92,7 @@ function buttonCallBack(input){
                 result = operate(operator, parseFloat(number1), parseFloat(number2));
                 operator = input;
                 lastInputs.textContent = result;
-                lastInputs.textContent += operator;
+                lastInputs.textContent += " " + operator;
                 display.textContent = "";
                 number1 = result;
                 number2="";
@@ -197,9 +197,11 @@ buttons.forEach(button => {
             else if(keyValue === "/"){
                 keyValue = "÷"
             }
+            else if(keyValue === "*"){
+                keyValue = "x";
+            }
             else if(keyValue === "+"
-            || keyValue === "-"
-            || keyValue === "*"){
+            || keyValue === "-"){
                 keyValue = keyValue;
             }
             else{
