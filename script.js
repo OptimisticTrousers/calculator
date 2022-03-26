@@ -8,150 +8,149 @@ const dotButton = document.querySelector('.dot');
 
 let operator = "";
 
-let result = 0;
-
 let number1 = "";
 
 let number2 = "";
 
+let result = 0;
+
 dotButton.addEventListener('click', () => {
 
-
     if(display.textContent.includes('.')){
-        return
+
+        return;
     } 
     else{
+
         display.textContent += ".";
     }
 })
 
-
 buttons.forEach(button => {
 
         if(button.textContent === "."){
+
             return;
         }
 
     button.addEventListener('click', () => {
 
-        if(display.textContent === "Infinity" || lastInputs.textContent === "Infinity"){
-
-            handleInfinity(button.textContent);
-        }
-        else{
-
-            buttonCallBack(button.textContent);
-        }
-
-
-    });
-
-})
-
-        document.addEventListener('keydown', (event) => {
-
-            let keyValue = event.key
-
-            handleInfinity(keyValue);
-
-            if(keyValue === "C"){
-
-                keyValue = "CLEAR"
-            }
-            else if(keyValue === "Backspace"){
-
-                keyValue = "DELETE"
-            }
-            else if(keyValue === "Enter"){
-                keyValue = "=";
-            }
-            else if(keyValue >= 0 || keyValue <= 9){
-                keyValue = keyValue.toString(); 
-            }
-            else if(keyValue === "/"){
-                keyValue = "÷"
-            }
-            else if(keyValue === "*"){
-                keyValue = "x";
-            }
-            else if(keyValue === "+"
-            || keyValue === "-"
-            || keyValue === "."){
-                keyValue = keyValue;
-            }
-            else{
-                return;
-            }
-
-
             if(display.textContent === "Infinity" || lastInputs.textContent === "Infinity"){
 
-                handleInfinity(keyValue);
+                handleInfinity(button.textContent);
             }
             else{
 
-                buttonCallBack(keyValue);
+                buttonCallBack(button.textContent);
             }
-        })
+        });
+})
+
+document.addEventListener('keydown', (event) => {
+
+    let keyValue = event.key;
+
+    handleInfinity(keyValue);
+
+    if(keyValue === "C"){
+
+        keyValue = "CLEAR"
+    }
+    else if(keyValue === "Backspace"){
+
+        keyValue = "DELETE"
+    }
+    else if(keyValue === "Enter"){
+
+        keyValue = "=";
+    }
+    else if(keyValue >= 0 || keyValue <= 9){
+
+        keyValue = keyValue.toString(); 
+    }
+    else if(keyValue === "/"){
+
+        keyValue = "÷";
+    }
+    else if(keyValue === "*"){
+
+        keyValue = "x";
+    }
+    else if(keyValue === "+"
+    || keyValue === "-"
+    || keyValue === "."){
+
+        keyValue = keyValue;
+    }
+    else{
+
+        return;
+    }
+
+
+    if(display.textContent === "Infinity" || lastInputs.textContent === "Infinity"){
+
+        handleInfinity(keyValue);
+    }
+    else{
+
+        buttonCallBack(keyValue);
+    }
+})
 
 function clear(){
 
     display.textContent = "0";
+
     lastInputs.textContent = "";
+
     number1 = "";
+
     number2 = "";
+
     operator = "";
 }
 
 function backspaceDelete(){
 
-            if(display.textContent === "NaN"){
-                clear();
-            }
-            else if(display.textContent !== "" && lastInputs.textContent !== ""){
+    if(display.textContent === "NaN"){
 
-                display.textContent = display.textContent.slice(0, -1);
-                number2 = number2.slice(0, -1);
-            }
-            else if(display.textContent.length === 1){
-                
-                display.textContent = "0";
-            }
-            else if(lastInputs.textContent.length === 1){ 
+        clear();
+    }
+    else if(display.textContent !== "" && lastInputs.textContent !== ""){
 
-                lastInputs.textContent = "";
-                display.textContent = "0";
-            }
-            else if(operatorCheck(lastInputs.textContent) === false && number1.length === 1 && lastInputs.textContent.length === 2){
+        display.textContent = display.textContent.slice(0, -1);
+        number2 = number2.slice(0, -1);
+    }
+    else if(display.textContent.length === 1){
+        
+        display.textContent = "0";
+    }
+    else if(lastInputs.textContent.length === 1){ 
 
-                lastInputs.textContent = "";
-                display.textContent = "0";
-                number1 = ""; 
-            }
-            else if(display.textContent === ""){
+        lastInputs.textContent = "";
+        display.textContent = "0";
+    }
+    else if(operatorCheck(lastInputs.textContent) === false && number1.length === 1 && lastInputs.textContent.length === 2){
 
-                if(operatorCheck(lastInputs.textContent)){
+        lastInputs.textContent = "";
+        display.textContent = "0";
+        number1 = ""; 
+    }
+    else if(display.textContent === ""){
 
-                    operator = "";
-                }
+        if(operatorCheck(lastInputs.textContent)){
 
-                lastInputs.textContent = lastInputs.textContent.slice(0, -1);
-            }
-            //else if(number1.length === 1 && operator === "" && number2 === "" && display.textContent === ""){
+            operator = "";
+        }
 
-                //if(operatorCheck(lastInputs.textContent) != true && number1.length === 1){
+        lastInputs.textContent = lastInputs.textContent.slice(0, -1);
+    }
+    else{
 
-                //}
-
-                //lastInputs.textContent = "";
-                //display.textContent = "0";
-            //}
-
-            else{
-
-                display.textContent = display.textContent.slice(0, -1);
-                number2 += number2.slice(0, -1);
-            }
+        display.textContent = display.textContent.slice(0, -1);
+        number2 += number2.slice(0, -1);
+    }
 
 }
 
@@ -181,49 +180,35 @@ function divide(a, b){
     return (a / b).toFixed(2);
 }
 
-//function checkIfValid(){
-
-    //let validCheck = display.textContent;
-    
-    //if(validCheck.endsWith('+') === true 
-    //|| validCheck.endsWith('-') === true 
-    //|| validCheck.endsWith('x') === true 
-    //|| validCheck.endsWith('÷') === true){
-
-        //alert('Sorry, please enter a value after the operator');
-        //return false;
-    //}
-    //else{
-        //return true;
-    //}
-//}
-
 function operate(operator, a, b){
-
 
     switch(operator){
 
         case '+':
+
             return add(a, b);
         case '-':
+
             return subtract(a, b);
         case 'x':
+
             return multiply(a, b);
         case '÷':
+
             return divide(a, b);
     }
 }
 
 function operatorCheck(textContent){
 
-        if(textContent === "+"
-        || textContent === "-"
-        || textContent === "x"
-        || textContent === "÷"){
+    if(textContent === "+"
+    || textContent === "-"
+    || textContent === "x"
+    || textContent === "÷"){
 
-            return true;
-        }
-        return false;
+        return true;
+    }
+    return false;
 
 }
 
@@ -240,39 +225,30 @@ function calculate(){
     result = display.textContent = operate(operator, parseFloat(number1), parseFloat(number2));
 
     number1 = result;
+
     number2="";
+    
     operator = "";
 
 }
 
 function buttonCallBack(input){
 
-        //if(display.textContent.includes('.')){
-            //dotButton.removeEventListener('click');
-        //}
         if(input === "DELETE"){
 
             backspaceDelete();
-
             if(input.includes('e')){
+
                 clear();
             }
-            //if(display.textContent.slice(0, 1) === "."){
-                //dotButton.addEventListener('click', () => {
-                    //display.textContent += dotbutton.textContent;
-                //})
-            //}
-
         }
         else if(display.textContent.length >= 11){
 
-
             if(display.textContent === "Infinity" || display.textContent === "NaN"){
+
                 return;
             }
             else{
-
-                let replacementText = display.textContent
 
                 display.textContent = Number(display.textContent).toExponential(2);
             }
@@ -281,11 +257,10 @@ function buttonCallBack(input){
         else if(lastInputs.textContent.length >= 11){
 
             if(lastInputs.textContent === "Infinity"){
+
                 return;
             }
             else{
-
-                let replacementText = lastInputs.textContent
 
                 lastInputs.textContent = Number(lastInputs.textContent).toExponential(2);
             }
@@ -300,18 +275,23 @@ function buttonCallBack(input){
 
             if(number1 !== "" && number2 !== "" && operator !== ""){
 
-                
                 number1 = lastInputs.textContent.slice(0, lastInputs.textContent.indexOf(`${operator}`));
+
                 number2 = display.textContent.slice(display.textContent.indexOf(`${operator}`)+1, display.textContent.length);
 
                 result = operate(operator, parseFloat(number1), parseFloat(number2));
-                operator = input;
-                lastInputs.textContent = result;
-                lastInputs.textContent += " " + operator;
-                display.textContent = "";
-                number1 = result;
-                number2="";
 
+                operator = input;
+
+                lastInputs.textContent = result;
+
+                lastInputs.textContent += " " + operator;
+
+                display.textContent = "";
+
+                number1 = result;
+
+                number2="";
             }
             else{
 
@@ -320,9 +300,10 @@ function buttonCallBack(input){
                     return;
                 }
                 else{
+
                     display.textContent += " " + input;
-                    lastInputs.textContent += display.textContent
-                    display.textContent = ""
+                    lastInputs.textContent += display.textContent;
+                    display.textContent = "";
                 }
 
             }
@@ -332,24 +313,18 @@ function buttonCallBack(input){
         }
         else if(input === "="){
 
-
             if(operator === ""){
-                return 
+
+                return;
             }
             if(lastInputs.textContent.endsWith(`${operator}`) && display.textContent === ""){
+
                 alert(`Sorry, please enter a valid number after the operator ${operator}`);
             }
             else{
                 
-
                 calculate();
-
-
             }
-                
-
-            
-            
 
         }
         else if(input === "CLEAR"){
@@ -359,25 +334,21 @@ function buttonCallBack(input){
         else{
 
             if(operatorCheck(input)){
+
                 return;
             }
-
-            else if(lastInputs.textContent.includes('+')
-            || lastInputs.textContent.includes('-')
-            || lastInputs.textContent.includes('x')
-            || lastInputs.textContent.includes('÷')){
+            else if(lastInputs.textContent.includes(`${input}`)){
 
                 number2 += input;
             }
             else if(display.textContent === "0"){
+
                 display.textContent = "";
             }
                 number1 += input;
+                
                 display.textContent += input;
-
-
         }
-
 }
 
 function handleInfinity(userInput){
@@ -385,30 +356,23 @@ function handleInfinity(userInput){
         if(display.textContent === "Infinity"){
 
             if(userInput === "DELETE" || userInput === "CLEAR" || userInput === "Backspace" || userInput === "C"){
+
                 clear();
             }
             else{
 
                 display.textContent = Number(display.textContent).toExponential(2);
             }
-
         }
         if(lastInputs.textContent === "Infinity"){
 
             if(userInput === "DELETE" || userInput === "CLEAR" || userInput === "Backspace" || userInput === "C"){
+
                 clear();
             }
             else{
 
                 lastInputs.textContent = Number(lastInputs.textContent).toExponential(2);
             }
-
         }
-        
-
 }
-
-console.log(add(3, 5, 8))
-console.log(subtract(3, 5, 8))
-console.log(multiply(3, 5, 8))
-console.log(divide(3, 5, 8))
