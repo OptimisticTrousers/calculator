@@ -281,7 +281,7 @@ function backspaceDelete(){
             if(display.textContent === "NaN"){
                 clear();
             }
-            if(display.textContent !== "" && lastInputs.textContent !== ""){
+            else if(display.textContent !== "" && lastInputs.textContent !== ""){
 
                 display.textContent = display.textContent.slice(0, -1);
                 number2 = number2.slice(0, -1);
@@ -295,12 +295,11 @@ function backspaceDelete(){
                 lastInputs.textContent = "";
                 display.textContent = "0";
             }
-            else if(operatorCheck(lastInputs.textContent) == false && number1.length === 1){
+            else if(operatorCheck(lastInputs.textContent) === false && number1.length === 1 && lastInputs.textContent.length === 2){
 
                 lastInputs.textContent = "";
                 display.textContent = "0";
                 number1 = ""; 
-
             }
             else if(display.textContent === ""){
 
