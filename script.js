@@ -345,6 +345,12 @@ function multiply(a, b){
 
 function divide(a, b){
 
+    if(b === 0){
+        alert("You cannot divide by 0!");
+        clear();
+        return "0";
+    }
+
     return a / b;
 }
 
