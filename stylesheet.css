@@ -1,7 +1,9 @@
+html {
+    height: 100%;
+}
 body{
 
-    height: 100vh;
-    width: 100%;
+    min-height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,7 +16,7 @@ body{
 
     display: grid;
     grid-template-areas: "header header";
-    grid-template-columns: repeat(4, 100px);
+    grid-template-columns: repeat(4, 1fr);
     grid-gap: 10px;
 }
 
@@ -39,9 +41,8 @@ main{
     margin-top: auto;
     flex-direction: column;
     justify-content: center;
-    width: auto;
     padding: 50px 25px;
-    height: 500px;
+    height: 50%;
     background-color:#c2d4b1;
     border-radius: 10px;
     box-shadow: 8px 8px 8px #ff4f44; 
@@ -67,7 +68,6 @@ button{
     border-radius: 15px;
     background-color: black;
     color: white;
-    font-size: large;
 }
 footer{
 
@@ -105,4 +105,30 @@ img{
     font-family: "Scientific Calculator LCD";
     color: white;
     font-size: xx-large;
+}
+
+@media(max-width: 620px) {
+    footer {
+        display: block;
+        text-align: center;
+    }
+    main{
+        width: 82%;
+        padding: 1rem;
+    }
+    .title {
+        font-size: x-large;
+    }
+    .buttons {
+        width: 100%;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+    button.clear, button.delete{
+        padding: 10% 20%;
+    }
+    .buttons > button {
+        padding: 10%;
+    }
 }
